@@ -16,4 +16,12 @@ describe "Board" do
 		expect(board.rows[0].count).to eq(10)
 	end
 
+	it 'has ten columns' do
+		expect(board.columns.count).to eq(10)
+	end
+
+	# it 'can register a shot at coordinate a1' do
+	# 	expect(board.rows[0][0]).to eq("a1")
+	# end
+
 end

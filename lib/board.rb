@@ -10,4 +10,8 @@ class Board
 		@rows = Array.new(10) { Array.new(10, " ") }
 	end
 
+	def columns
+		@columns = rows.transpose
+	end
+
 end
