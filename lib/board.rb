@@ -1,10 +1,41 @@
-class Board
+module RulesOfWar
 
-	attr_reader :player
+	def register_shot(coordinates)
+		location = location_at(coordinates)
+		return water(coordinates) if empty?(location)
+		return hit_ship_at(coordinates) if ship_at?(location)
+	end
+
+	def location_at(coordinates)
+		@grid[coordinates]
+	end
+
+	def empty?(location)
+		location == ""
+	end
+
+	def ship_at?(location)
+		location == "s"
+	end
+
+	def water(coordinates)
+		@grid[coordinates] = "o"
+	end
+
+	def hit_ship_at(coordinates)
+		@grid[coordinates] = "x"
+	end
+end
+
+
+class Board
+	include RulesOfWar
+
+	attr_reader :player, :grid
 
 	def initialize(player)
 		@player = player
-		
+		grid_hash
 	end
 
 	def grid_hash
@@ -13,27 +44,13 @@ class Board
 		@grid
 	end
 
-
 	def rows
-		@rows = grid_hash.each_slice(10).map{|ele| ele}
+		@grid.values.each_slice(10).map{|e|e}.transpose
 	end
 
-	def columns
-		@columns = rows.transpose
+  	def place_ship(at_coordinates)
+  		@grid[at_coordinates]='s'
 	end
-
-	def register_shot(at_coordinates)
-
-		@location = (columns.flatten(1)).assoc(at_coordinates)
-		if @location[1] = "" 
-			then @location[1]<<"o"
-
-		elsif @location[1] = "s"
-			then @location[1]<<"x" 	
-
-	end
-	@location
-	end
-
-
+	
 end
+

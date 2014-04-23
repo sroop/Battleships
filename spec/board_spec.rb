@@ -16,18 +16,25 @@ describe "Board" do
 		expect((board.rows).count).to eq 10
 	end
 
-	it 'has ten columns in the grid' do
-		expect((board.columns).count).to eq 10	
-	end
-
 	it "marks with an 'o' the coordinate of a player's shot on water" do
-		expect(board.register_shot("B1")).to eq ["B1", "o"]	
+		expect(board.register_shot("B1")).to eq "o"
 	end
 
-	it "marks with an 'x' the coordinate of a player's shot on a ship" do
+  it "should be able to place a ship on the board" do
+    expect(board.place_ship("C1")).to eq "s"
+  end
 
-		expect(board.register_shot("C4")).to eq ["C4", "x"]	
-	end
+  it "marks with an 'x' the coordinate of a player's shot on a ship" do
+    # board2 = Board.new("colin")
+    # board2.place_ship("C4")
+    board.place_ship("C4")
+    expect(board.grid["C4"]).to eq "s"
+    expect(board.register_shot("C4")).to eq 'x'
+    puts board.grid.values.each_slice(10).map{|e|e}.transpose.inspect
+    # expect(board.register_shot("C4")).to eq ["C4", "x"]
+    puts board.rows.inspect
+    puts board.grid
+  end
 
 
 	# it "can record a player's shot with a marker" do
