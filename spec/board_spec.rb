@@ -20,8 +20,7 @@ describe "Board" do
 		expect((board.columns).count).to eq 10	
 	end
 
-	# it 'can register a shot at coordinate a1' do
-	# 	expect(board.rows[0][0]).to eq("a1")
-	# end
-
+	it 'can find coordinate A1' do
+		expect(board.at_coordinates("A1")).to eq ["A1", ""]
+	end
 end

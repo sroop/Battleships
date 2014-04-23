@@ -4,7 +4,7 @@ class Board
 
 	def initialize(player)
 		@player = player
-	
+		
 	end
 
 	def grid_hash
@@ -15,18 +15,15 @@ class Board
 
 
 	def rows
-		@rows = grid_hash.keys.each_slice(10).map{|ele| ele}
+		@rows = grid_hash.each_slice(10).map{|ele| ele}
 	end
 
 	def columns
 		@columns = rows.transpose
 	end
 
-# 	def row_and_column_for(location)
-#     separate = location.chars 
-#     row = separate[1].to_i - 1
-#     column = separate[0].ord - 65
-#     return { :row => row, :column => column }
-# 	end
+	def at_coordinates(coordinate)
+		(columns.flatten(1)).assoc(coordinate)
+	end
 
 end
