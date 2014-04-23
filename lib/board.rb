@@ -4,6 +4,7 @@ class Board
 
 	def initialize(player)
 		@player = player
+	
 	end
 
 	def grid_hash
@@ -13,15 +14,13 @@ class Board
 	end
 
 
+	def rows
+		@rows = grid_hash.keys.each_slice(10).map{|ele| ele}
+	end
 
-
-# 	def rows
-# 		@rows = Array.new(10) { Array.new(10, " ") }
-# 	end
-
-# 	def columns
-# 		@columns = rows.transpose
-# 	end
+	def columns
+		@columns = rows.transpose
+	end
 
 # 	def row_and_column_for(location)
 #     separate = location.chars 
