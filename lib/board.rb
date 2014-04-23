@@ -22,8 +22,18 @@ class Board
 		@columns = rows.transpose
 	end
 
-	def at_coordinates(coordinate)
-		(columns.flatten(1)).assoc(coordinate)
+	def register_shot(at_coordinates)
+
+		@location = (columns.flatten(1)).assoc(at_coordinates)
+		if @location[1] = "" 
+			then @location[1]<<"o"
+
+		elsif @location[1] = "s"
+			then @location[1]<<"x" 	
+
 	end
+	@location
+	end
+
 
 end
