@@ -21,12 +21,12 @@ describe "Board" do
 	end
 
   it "should be able to place a ship on the board" do
-    expect(board.place_ship("C1")).to eq "s"
+    expect(board.place_ship("C1").content.status).to eq "s"
   end
 
   it "marks with an 'x' the coordinate of a player's shot on a ship" do
     board.place_ship("C4")
-    expect(board.grid["C4"]).to eq "s"
+    expect(board.grid["C4"].content.status).to eq "s"
     expect(board.register_shot("C4")).to eq 'x'
   end
 
