@@ -21,14 +21,20 @@ describe "Board" do
 	end
 
   it "should be able to place a ship on the board" do
-    expect(board.place_ship("C1").content.status).to eq "s"
+    expect(board.place_ship.content.status).to eq "s"
   end
 
   it "marks with an 'x' the coordinate of a player's shot on a ship" do
-    board.place_ship("C4")
+    board.stub(:random_coordinate_generator).and_return("C4")
+    board.place_ship
     expect(board.grid["C4"].content.status).to eq "s"
     expect(board.register_shot("C4")).to eq 'x'
   end
+
+	it 'can generate the letter J' do
+  	board.stub(:random_coordinate_generator).and_return("J1")
+  	expect(board.random_coordinate_generator).to eq "J1"
+	end
 
 
 end

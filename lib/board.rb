@@ -1,11 +1,8 @@
-require "rulesofwar"
-require	"ship"
-require "water"
-require "cell"
+require 'ship'
+require 'water'
+require 'cell'
 
 class Board
-
-	include RulesOfWar
 
 	attr_reader :player, :grid
 
@@ -24,9 +21,26 @@ class Board
 		@grid.values.each_slice(10).map{|e|e}.transpose
 	end
 
-  	def place_ship(at_coordinates)
+	def columns
+		rows.transpose
+	end
+
+  	def place_ship
+  		at_coordinates = random_coordinate_generator
   		@grid[at_coordinates] = Cell.new(Ship.new)
 	end
+
+	def register_shot(coordinates)
+		@grid[coordinates].content.hit!
+	end
 	
+	def random_coordinate_generator
+		letter = ("A".."J").to_a.sample
+		number = (1..10).to_a.sample.to_s
+		random_coordinate = letter + number
+		return random_coordinate
+	end
+
 end
+
 
