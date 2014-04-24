@@ -30,7 +30,5 @@ describe "Board" do
     expect(board.register_shot("C4")).to eq 'x'
   end
 
-	# it "can record a player's shot with a marker" do
-	# 	expect(board.mark_shot("B4")).to matcher
-	# end
+
 end
