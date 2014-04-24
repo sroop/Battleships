@@ -25,4 +25,5 @@ module RulesOfWar
 	def hit_ship_at(coordinates)
 		@grid[coordinates] = "x"
 	end
+
 end

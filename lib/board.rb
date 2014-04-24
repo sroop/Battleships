@@ -1,3 +1,4 @@
+require "RulesOfWar"
 
 class Board
 	include RulesOfWar
