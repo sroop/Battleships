@@ -25,17 +25,10 @@ describe "Board" do
   end
 
   it "marks with an 'x' the coordinate of a player's shot on a ship" do
-    # board2 = Board.new("colin")
-    # board2.place_ship("C4")
     board.place_ship("C4")
     expect(board.grid["C4"]).to eq "s"
     expect(board.register_shot("C4")).to eq 'x'
-    puts board.grid.values.each_slice(10).map{|e|e}.transpose.inspect
-    # expect(board.register_shot("C4")).to eq ["C4", "x"]
-    puts board.rows.inspect
-    puts board.grid
   end
-
 
 	# it "can record a player's shot with a marker" do
 	# 	expect(board.mark_shot("B4")).to matcher
