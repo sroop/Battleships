@@ -25,9 +25,12 @@ class Board
 		rows.transpose
 	end
 
-  	def place_ship
+  	def place_aircraft_carrier
   		@grid[random_coordinate_generator] = Cell.new(Ship.new)
-  		@grid[number_along] = Cell.new(Ship.new)
+  		@grid[ship_length_2] = Cell.new(Ship.new)
+  		@grid[ship_length_3] = Cell.new(Ship.new)
+  		@grid[ship_length_4] = Cell.new(Ship.new)
+  		@grid[ship_length_5] = Cell.new(Ship.new)
 	end
 
 	def register_shot(coordinates)
@@ -41,12 +44,35 @@ class Board
 		return random_coordinate
 	end
 
-	def number_along
+	def ship_length_2
 		first_spot = random_coordinate_generator.chars
 		first_spot[1] = first_spot[1].next
-		next_spot = first_spot.join
-		return next_spot
+		ship_two = first_spot.join
+		return ship_two
 	end
+
+	def ship_length_3
+		second_spot = ship_length_2.chars
+		second_spot[1] = second_spot[1].next
+		ship_three = second_spot.join
+		return ship_three
+	end
+
+	def ship_length_4
+		third_spot = ship_length_3.chars
+		third_spot[1] = third_spot[1].next
+		ship_four = third_spot.join
+		return ship_four
+	end
+
+	def ship_length_5
+		fourth_spot = ship_length_4.chars
+		fourth_spot[1] = fourth_spot[1].next
+		ship_five = fourth_spot.join
+		return ship_five
+	end
+
+
 
 	# def next_number_along(at_coordinates)
 	# 	split = at_coordinates.chars

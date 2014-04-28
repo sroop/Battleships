@@ -21,12 +21,12 @@ describe "Board" do
 	end
 
   it "should be able to place a ship on the board" do
-    expect(board.place_ship.content.status).to eq "s"
+    expect(board.place_aircraft_carrier.content.status).to eq "s"
   end
 
   it "marks with an 'x' the coordinate of a player's shot on a ship" do
     board.stub(:random_coordinate_generator).and_return("C4")
-    board.place_ship
+    board.place_aircraft_carrier
     expect(board.grid["C4"].content.status).to eq "s"
     expect(board.register_shot("C4")).to eq 'x'
   end
@@ -38,11 +38,13 @@ describe "Board" do
 
   it "can place ships in adjacent cells consecutively" do
     board.stub(:random_coordinate_generator).and_return("C4")
-    board.place_ship
+    board.place_aircraft_carrier
     expect(board.grid["C4"].content.status).to eq "s"
-    board.stub(:number_along).and_return("C5")
-    expect(board.grid["C5"].content.status).to eq "s"
+    board.stub(:ship_length_2).and_return("C5")
+    expect(board.grid["C8"].content.status).to eq "s"
   end
+
+
 
 
 end
