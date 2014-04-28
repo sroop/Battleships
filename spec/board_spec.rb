@@ -36,5 +36,13 @@ describe "Board" do
   	expect(board.random_coordinate_generator).to eq "J1"
 	end
 
+  it "can place ships in adjacent cells consecutively" do
+    board.stub(:random_coordinate_generator).and_return("C4")
+    board.place_ship
+    expect(board.grid["C4"].content.status).to eq "s"
+    board.stub(:number_along).and_return("C5")
+    expect(board.grid["C5"].content.status).to eq "s"
+  end
+
 
 end

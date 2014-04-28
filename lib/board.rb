@@ -26,8 +26,8 @@ class Board
 	end
 
   	def place_ship
-  		at_coordinates = random_coordinate_generator
-  		@grid[at_coordinates] = Cell.new(Ship.new)
+  		@grid[random_coordinate_generator] = Cell.new(Ship.new)
+  		@grid[number_along] = Cell.new(Ship.new)
 	end
 
 	def register_shot(coordinates)
@@ -40,6 +40,21 @@ class Board
 		random_coordinate = letter + number
 		return random_coordinate
 	end
+
+	def number_along
+		first_spot = random_coordinate_generator.chars
+		first_spot[1] = first_spot[1].next
+		next_spot = first_spot.join
+		return next_spot
+	end
+
+	# def next_number_along(at_coordinates)
+	# 	split = at_coordinates.chars
+	# 	split[1] = split[1].next
+	# 	split.join
+	# 	return split
+	# end
+
 
 end
 
