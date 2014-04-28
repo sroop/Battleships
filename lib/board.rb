@@ -3,6 +3,7 @@ require 'water'
 require 'cell'
 require_relative './shipbuilder'
 
+
 class Board
 
 	include ShipBuilder

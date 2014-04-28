@@ -39,7 +39,7 @@ module ShipBuilder
 		return ship_five
 	end
 
-		def ship_length_two
+	def ship_length_two
 		@grid[random_coordinate_generator] = Cell.new(Ship.new)
   		@grid[second_coordinate] = Cell.new(Ship.new)
 	end
@@ -64,5 +64,5 @@ module ShipBuilder
   		@grid[fourth_coordinate] = Cell.new(Ship.new)
   		@grid[fifth_coordinate] = Cell.new(Ship.new)
 	end
-
+# LOL
 end
